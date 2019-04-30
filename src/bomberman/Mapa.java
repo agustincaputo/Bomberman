@@ -1,6 +1,7 @@
 package bomberman;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Mapa extends Juego{
 
@@ -58,7 +59,23 @@ public class Mapa extends Juego{
 		
 	}		
 	public void crearPiedras() {
-		
+		Bloque piedra = new Bloque("piedra");
+		int cantPiedras=50;
+		int vecFila[] = {3,5,7};
+		int vecCol[] = {3,5,7,9,11};
+		int randomFil;
+		int randomCol;
+		Random ran=new Random();
+		int i=0;
+		while(i!=cantPiedras) {
+		 randomFil = vecFila[ran.nextInt((int) (Math.random() * 2))];
+		 randomCol = vecCol[ran.nextInt((int) (Math.random() * 4))];
+			if(matrizMapa[randomFil][randomCol]==null) {
+				matrizMapa[randomFil][randomCol]=piedra;
+				i++;
+			}
+		}
+	
 	}
 	
 	
