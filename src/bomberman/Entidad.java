@@ -7,9 +7,10 @@ public class Entidad {
 	public Entidad() {
 		
 	}
-	public Entidad(int x , int y) {
+	public Entidad(int x, int y) {
 		this.x=x;
 		this.y=y;
 	}
+
 
 }

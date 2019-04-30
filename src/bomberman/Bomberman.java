@@ -14,6 +14,11 @@ public class Bomberman extends Entidad{
 		return vivo;
 	}
 
+	@Override
+	public String toString() {
+		return "Bomberman";
+	}
+
 	public int getPosX() {
 		return posX;
 	}
@@ -76,6 +81,8 @@ public class Bomberman extends Entidad{
 	}
 	
 	public void moverse(int direccion) {
+		int x = this.posX;
+		int y = this.posY;	
 		
 	}
 	
@@ -84,4 +91,5 @@ public class Bomberman extends Entidad{
 		return nueva;		
 	}
 
+	
 }
