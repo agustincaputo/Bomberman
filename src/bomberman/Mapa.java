@@ -9,11 +9,11 @@ public class Mapa{
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
 	private Object matrizMapa[][];
-	private ArrayList<Bomberman>jugadores[];	
+	private ArrayList<Bomberman> jugadores;
 
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Object [FILMAX][COLMAX];
-		this.jugadores = new ArrayList[cantBombermans];// no se q onda este warning
+		jugadores = new ArrayList<Bomberman>();	
 		this.crearParedes();
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
@@ -62,23 +62,30 @@ public class Mapa{
 	}
 	public void crearPosBomberman(int cantBombermans) {
 		int i=0;
-		matrizMapa[1][1] =  jugadores[i++];
-		matrizMapa[FILMAX-1][COLMAX-1] = jugadores[i++];
+		jugadores.add(new Bomberman(1,1));
+		jugadores.add(new Bomberman(FILMAX-1,COLMAX-1));
+		matrizMapa[1][1] =  jugadores.get(i++);
+		matrizMapa[FILMAX-1][COLMAX-1] = jugadores.get(i++);
 		if(cantBombermans == 4) {
-			matrizMapa[1][COLMAX-1] = jugadores[i++];
-			matrizMapa[FILMAX-1][1] = jugadores[i++]; 					
+			jugadores.add(new Bomberman(1,COLMAX-1));
+			jugadores.add(new Bomberman(FILMAX-1,1));
+			matrizMapa[1][COLMAX-1] = jugadores.get(i++);
+			matrizMapa[FILMAX-1][1] = jugadores.get(i++); 					
 		}
-		if(cantBombermans == 3)
-			matrizMapa[1][COLMAX-1] = jugadores[i++];
+		if(cantBombermans == 3) {
+			jugadores.add(new Bomberman(1,COLMAX-1));
+			matrizMapa[1][COLMAX-1] = jugadores.get(i++);
+		}
 		
 	}		
 	public void crearPiedras() {
 		
-		int cantPiedras=50;
+		int cantPiedras=38;
 		int vecFila[] = {3,5,7};
 		int vecCol[] = {3,5,7,9,11};		
 		int randomFil;
 		int randomCol;
+		int cont=0;
 		int i=0;
 		while(i!=cantPiedras) {
 			
@@ -86,7 +93,8 @@ public class Mapa{
 		 randomCol =vecCol[ThreadLocalRandom.current().nextInt(0, 4 + 1)];
 			if(matrizMapa[randomFil][randomCol]==null) {
 				Bloque piedra = new Bloque("piedra",randomFil,randomCol);
-				matrizMapa[randomFil][randomCol]=piedra;				
+				matrizMapa[randomFil][randomCol]=piedra;	
+				cont++;
 			}
 			i++;//no se q onda el rand se repite y no deja terminar el while
 		}	

@@ -14,6 +14,11 @@ public class Bomberman extends Entidad{
 		return vivo;
 	}
 
+	@Override
+	public String toString() {
+		return "Bomberman";
+	}
+
 	public int getPosX() {
 		return posX;
 	}
