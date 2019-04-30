@@ -1,19 +1,14 @@
 package bomberman;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
-import javax.swing.JOptionPane;
 
 public class Mapa{
 
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
 	private Object matrizMapa[][];
-	private ArrayList<Bomberman>jugadores[];
-	
+	private ArrayList<Bomberman>jugadores[];	
 
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Object [FILMAX][COLMAX];
@@ -22,7 +17,6 @@ public class Mapa{
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();
-		JOptionPane.showMessageDialog(null,matrizMapa);
 	}
 	
 	public void crearParedes() {		
@@ -83,9 +77,7 @@ public class Mapa{
 				matrizMapa[randomFil][randomCol]=piedra;				
 			}
 			i++;//no se q onda el rand se repite y no deja terminar el while
-		}
-	
-	}
-	
+		}	
+	}	
 	
 }
