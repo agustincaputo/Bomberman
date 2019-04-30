@@ -6,8 +6,7 @@ public class testPiedras {
 
 	@Test
 	public void debuggeoTodoAca() {			
-		Juego juegoTest = new Juego(4);		
-		
+		Juego juegoTest = new Juego(4);				
 	}
 
 }
