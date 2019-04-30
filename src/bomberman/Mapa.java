@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Mapa extends Juego{
 
 	public static final int COLMAX = 15;
-	public static final int FILMAX = 15;
+	public static final int FILMAX = 11;
 	private Object matrizMapa[][];
 	private ArrayList <Bomberman> jugadores [];
 	
 	
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Object [FILMAX][COLMAX];
-		this.jugadores = new ArrayList[cantBombermans] ;
+		this.jugadores = new ArrayList[cantBombermans];
 		this.crearParedes();
 		this.crearObstaculos();
 		this.crearPosBomberman(cantBombermans);
