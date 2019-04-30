@@ -67,6 +67,10 @@ public class Mapa{
 		matrizMapa[1][1] =  jugadores.get(i++);
 		matrizMapa[FILMAX-2][COLMAX-2] = jugadores.get(i++);
 		if(cantBombermans == 4) {
+			jugadores.add(new Bomberman(1,COLMAX-2));
+			jugadores.add(new Bomberman(FILMAX-2,1));
+			matrizMapa[1][COLMAX-2] = jugadores.get(i++);
+			matrizMapa[FILMAX-2][1] = jugadores.get(i++); 					
 		}
 		if(cantBombermans == 3) {
 			jugadores.add(new Bomberman(1,COLMAX-2));
