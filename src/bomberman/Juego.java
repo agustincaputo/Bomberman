@@ -11,5 +11,11 @@ public class Juego {
 	public Juego(int cantBombermans) {		
 		Mapa mapa = new Mapa(cantBombermans);		
 	}		
+	public void bucleJuego() {
+		//aca se hace el juego
+		while(true) {
+			
+		}
+	}
 	
 }
