@@ -28,7 +28,7 @@ public class Mapa{
 			}
 			System.out.println("\n");
 		};
-		return "hola";
+		return "";
 	}
 
 	public void crearParedes() {		
