@@ -1,6 +1,7 @@
 package bomberman;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Mapa{
@@ -19,10 +20,21 @@ public class Mapa{
 		this.crearPiedras();
 	}
 	
+	@Override
+	public String toString() {
+		 for(int i = 0 ; i < FILMAX ; i++) {
+			for(int j=0 ; j < COLMAX; j++ ) {
+				System.out.print(String.format("%-10s",matrizMapa[i][j]) + "|");				
+			}
+			System.out.println("\n");
+		};
+		return "hola";
+	}
+
 	public void crearParedes() {		
 	
 		for(int i = 0 ; i < FILMAX ; i++) {
-			if(i== 0 || i == FILMAX) {
+			if(i== 0 || i == FILMAX-1) {
 				for(int j = 0; j < COLMAX ; j ++ ) {
 					Bloque pared = new Bloque("pared",i,j);
 					matrizMapa[i][j] = pared;

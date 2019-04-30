@@ -8,4 +8,9 @@ public class Bloque extends Entidad{
 		super(x,y);
 		this.tipoBloque=tipo;		
 	}
+
+	@Override
+	public String toString() {
+		return tipoBloque;
+	}
 }

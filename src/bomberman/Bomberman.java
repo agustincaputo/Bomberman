@@ -76,6 +76,8 @@ public class Bomberman extends Entidad{
 	}
 	
 	public void moverse(int direccion) {
+		int x = this.posX;
+		int y = this.posY;	
 		
 	}
 	
@@ -84,4 +86,5 @@ public class Bomberman extends Entidad{
 		return nueva;		
 	}
 
+	
 }
