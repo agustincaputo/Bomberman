@@ -1,29 +1,31 @@
 package bomberman;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+
+import javax.swing.JOptionPane;
 
 public class Mapa{
 
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
 	private Object matrizMapa[][];
-	private ArrayList <Bomberman> jugadores [];
+	private ArrayList<Bomberman>jugadores[];
 	
 
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Object [FILMAX][COLMAX];
-		this.crearPiedras();		
-		this.jugadores = new ArrayList[cantBombermans];
+		this.jugadores = new ArrayList[cantBombermans];// no se q onda este warning
 		this.crearParedes();
-		this.crearObstaculos();
 		this.crearPosBomberman(cantBombermans);
+		this.crearObstaculos();
+		this.crearPiedras();
+		JOptionPane.showMessageDialog(null,matrizMapa);
 	}
 	
-	public void crearParedes() {
-	
-		
+	public void crearParedes() {		
 	
 		for(int i = 0 ; i < FILMAX ; i++) {
 			if(i== 0 || i == FILMAX) {
@@ -34,9 +36,9 @@ public class Mapa{
 				}
 			else {
 				Bloque pared1 = new Bloque("pared",i,0);
-				Bloque pared2 = new Bloque("pared",i,COLMAX);
+				Bloque pared2 = new Bloque("pared",i,COLMAX-1);
 				 matrizMapa[i][0] = pared1;
-				 matrizMapa[i][COLMAX] = pared2;
+				 matrizMapa[i][COLMAX-1] = pared2;
 			}		
 		}
 	}
@@ -78,9 +80,9 @@ public class Mapa{
 		 randomCol =vecCol[ThreadLocalRandom.current().nextInt(0, 4 + 1)];
 			if(matrizMapa[randomFil][randomCol]==null) {
 				Bloque piedra = new Bloque("piedra",randomFil,randomCol);
-				matrizMapa[randomFil][randomCol]=piedra;
-				i++;
+				matrizMapa[randomFil][randomCol]=piedra;				
 			}
+			i++;//no se q onda el rand se repite y no deja terminar el while
 		}
 	
 	}
