@@ -2,45 +2,51 @@ package bomberman;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class Mapa extends Juego{
+public class Mapa{
 
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
 	private Object matrizMapa[][];
 	private ArrayList <Bomberman> jugadores [];
 	
-	
+
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Object [FILMAX][COLMAX];
+		this.crearPiedras();		
 		this.jugadores = new ArrayList[cantBombermans];
 		this.crearParedes();
 		this.crearObstaculos();
 		this.crearPosBomberman(cantBombermans);
-		this.crearPiedras();		
 	}
 	
 	public void crearParedes() {
 	
-		Bloque pared = new Bloque("pared");
+		
 	
 		for(int i = 0 ; i < FILMAX ; i++) {
 			if(i== 0 || i == FILMAX) {
-				for(int j = 0; j < COLMAX ; j ++ ) 
-					 matrizMapa[i][j] = pared;
+				for(int j = 0; j < COLMAX ; j ++ ) {
+					Bloque pared = new Bloque("pared",i,j);
+					matrizMapa[i][j] = pared;
+				}
 				}
 			else {
-				 matrizMapa[i][0] = pared;
-				 matrizMapa[i][COLMAX] = pared;
+				Bloque pared1 = new Bloque("pared",i,0);
+				Bloque pared2 = new Bloque("pared",i,COLMAX);
+				 matrizMapa[i][0] = pared1;
+				 matrizMapa[i][COLMAX] = pared2;
 			}		
 		}
 	}
 	
 	public void crearObstaculos() {
-		Bloque obstaculo = new Bloque("obstaculo");
+		
 		
 		for(int i = 2 ; i < FILMAX-1; i+=2) {
 			for(int j = 2 ; j < COLMAX-1; j+=2) {
+				Bloque obstaculo = new Bloque("obstaculo",i,j);
 				matrizMapa[i][j] = obstaculo; 
 			}			
 		}
@@ -59,18 +65,19 @@ public class Mapa extends Juego{
 		
 	}		
 	public void crearPiedras() {
-		Bloque piedra = new Bloque("piedra");
+		
 		int cantPiedras=50;
 		int vecFila[] = {3,5,7};
-		int vecCol[] = {3,5,7,9,11};
+		int vecCol[] = {3,5,7,9,11};		
 		int randomFil;
 		int randomCol;
-		Random ran=new Random();
 		int i=0;
 		while(i!=cantPiedras) {
-		 randomFil = vecFila[ran.nextInt((int) (Math.random() * 2))];
-		 randomCol = vecCol[ran.nextInt((int) (Math.random() * 4))];
+			
+		 randomFil =vecFila[ThreadLocalRandom.current().nextInt(0, 2 + 1)];
+		 randomCol =vecCol[ThreadLocalRandom.current().nextInt(0, 4 + 1)];
 			if(matrizMapa[randomFil][randomCol]==null) {
+				Bloque piedra = new Bloque("piedra",randomFil,randomCol);
 				matrizMapa[randomFil][randomCol]=piedra;
 				i++;
 			}
