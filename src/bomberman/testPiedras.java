@@ -7,8 +7,8 @@ public class testPiedras {
 
 	@Test
 	public void debuggeoTodoAca() {			
-		Mapa mapaTest = new Mapa(2);
-		System.out.println(mapaTest);
+		Juego juegoTest =  new Juego(4);
+		
 	}
 
 }

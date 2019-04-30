@@ -7,9 +7,11 @@ public class Juego {
 	
 	public Juego() {
 		Mapa mapa = new Mapa(2);
+		System.out.println(mapa);
 	}
 	public Juego(int cantBombermans) {		
-		Mapa mapa = new Mapa(cantBombermans);		
+		Mapa mapa = new Mapa(cantBombermans);	
+		System.out.println(mapa);
 	}		
 	public void bucleJuego() {
 		//aca se hace el juego
