@@ -16,6 +16,7 @@ public class Mapa extends Juego{
 		this.crearParedes();
 		this.crearObstaculos();
 		this.crearPosBomberman(cantBombermans);
+		this.crearPiedras();		
 	}
 	
 	public void crearParedes() {
@@ -56,6 +57,9 @@ public class Mapa extends Juego{
 			matrizMapa[1][COLMAX-1] = jugadores[i++];
 		
 	}		
+	public void crearPiedras() {
+		
+	}
 	
 	
 }
