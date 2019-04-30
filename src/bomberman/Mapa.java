@@ -63,20 +63,12 @@ public class Mapa{
 	public void crearPosBomberman(int cantBombermans) {
 		int i=0;
 		jugadores.add(new Bomberman(1,1));
-		jugadores.add(new Bomberman(FILMAX-1,COLMAX-1));
 		jugadores.add(new Bomberman(FILMAX-2,COLMAX-2));
 		matrizMapa[1][1] =  jugadores.get(i++);
-		matrizMapa[FILMAX-1][COLMAX-1] = jugadores.get(i++);
 		matrizMapa[FILMAX-2][COLMAX-2] = jugadores.get(i++);
 		if(cantBombermans == 4) {
-			jugadores.add(new Bomberman(1,COLMAX-1));
-			jugadores.add(new Bomberman(FILMAX-1,1));
-			matrizMapa[1][COLMAX-1] = jugadores.get(i++);
-			matrizMapa[FILMAX-1][1] = jugadores.get(i++); 					
 		}
 		if(cantBombermans == 3) {
-			jugadores.add(new Bomberman(1,COLMAX-1));
-			matrizMapa[1][COLMAX-1] = jugadores.get(i++);
 			jugadores.add(new Bomberman(1,COLMAX-2));
 			matrizMapa[1][COLMAX-2] = jugadores.get(i++);
 		}
