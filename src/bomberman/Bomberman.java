@@ -1,5 +1,7 @@
 package bomberman;
 
+import java.util.Objects;
+
 public class Bomberman extends Entidad{
 	
 	private boolean vivo;
@@ -80,16 +82,19 @@ public class Bomberman extends Entidad{
 		this.cantBombas=1;
 	}
 	
-	public void moverse(int direccion) {
-		int x = this.posX;
-		int y = this.posY;	
-		
+	public void moverHorizontal(int direccion, Mapa mapa) {
+		if(Objects.isNull(mapa.getPosicionMapa(this.posX+direccion, this.posY)))
+			this.posX = this.posX+1;
+	}
+	
+	public void moverVertical(int direccion, Mapa mapa){
+		if(Objects.isNull(mapa.getPosicionMapa(this.posX, this.posY+direccion)))
+			this.posY = this.posY+1;
 	}
 	
 	public Bomba ponerBomba(int x, int y) {
 		Bomba nueva = new Bomba(x,y);		
 		return nueva;		
 	}
-
 	
 }

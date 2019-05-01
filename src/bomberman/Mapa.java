@@ -7,11 +7,11 @@ public class Mapa {
 
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
-	private Object matrizMapa[][];
+	private Entidad matrizMapa[][];
 	private ArrayList<Bomberman> jugadores;
 
 	public Mapa(int cantBombermans) {
-		this.matrizMapa = new Object[FILMAX][COLMAX];
+		this.matrizMapa = new Entidad[FILMAX][COLMAX];
 		jugadores = new ArrayList<Bomberman>();
 		this.crearParedes();
 		this.crearPosBomberman(cantBombermans);
@@ -98,5 +98,13 @@ public class Mapa {
 			}
 
 		}
+	}
+	
+	public Entidad getPosicionMapa(int x, int y) {
+		return this.matrizMapa[x][y];
+	}
+	
+	public void setPosicionMapa(int x, int y, Entidad entidad) {
+		this.matrizMapa[x][y] = entidad;
 	}
 }
