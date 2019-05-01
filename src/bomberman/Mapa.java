@@ -38,9 +38,6 @@ public class Mapa {
 		
 		System.out.println("BOMBITA EXPLOTA BOMBA------------------------------");
 		
-
-		
-
 		System.out.println(this);//borrar cuando esten todos los test!
 
 
