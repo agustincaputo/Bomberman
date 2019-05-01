@@ -37,7 +37,7 @@ public class Bomba extends Entidad{
 	public void explotarBomba(Mapa mapa) {
 			boolean obstaculoArriba = false, obstaculoAbajo = false, obstaculoDerecha = false, obstaculoIzquierda = false;
 			int i;
-			for(i=0;i<this.rango;i++) 
+			for(i=0;i<=this.rango;i++) 
 			{
 				//abajo:
 				if(mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bloque  && !obstaculoAbajo) {
@@ -53,9 +53,9 @@ public class Bomba extends Entidad{
 				}
 				if(mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomberman && !obstaculoAbajo) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()+i, this.getY());
-					muerto.muere();
 					Bloque transitable = new Bloque("transitable",this.getX()+i,this.getY());
 					mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
+					muerto.muere(mapa);
 				}
 				//termino abajo	
 				//arriba:
@@ -72,9 +72,9 @@ public class Bomba extends Entidad{
 				}
 				if(mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomberman && !obstaculoArriba) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()-i, this.getY());
-					muerto.muere();
 					Bloque transitable = new Bloque("transitable",this.getX()-i,this.getY());
 					mapa.setMatrizMapa(transitable, this.getX()-i, this.getY());
+					muerto.muere(mapa);
 				}
 				//termino arriba
 				//derecha:
@@ -91,9 +91,9 @@ public class Bomba extends Entidad{
 				}
 				if(mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomberman && !obstaculoDerecha) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX(), this.getY()+i);
-					muerto.muere();
 					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()+i);
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()+i);
+					muerto.muere(mapa);
 				}
 				//termina derecha
 				//izquierda:
@@ -110,9 +110,9 @@ public class Bomba extends Entidad{
 				}
 				if(mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomberman && !obstaculoIzquierda) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX(), this.getY()-i);
-					muerto.muere();
 					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()-i);
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()-i);
+					muerto.muere(mapa);
 				}
 				//termina izquierda
 		}

@@ -92,7 +92,7 @@ public class Bomberman extends Entidad{
 		} catch (InterruptedException e) {
 			System.out.println("fallo de delay en ponerBomba");
 		}
-//		nueva.explotarBomba(mapa);//aca la exploto despues del delay
+		nueva.explotarBomba(mapa);//aca la exploto despues del delay
 		return nueva;		
 	}
 	
@@ -135,10 +135,12 @@ public class Bomberman extends Entidad{
 		}	
 	}
 	
-	public void muere() {
+	public void muere(Mapa mapa) {
 		this.cantMuertes++;
 		this.posX=this.getX();
 		this.posY=this.getY();
+		mapa.setMatrizMapa(this, posX, posY);
+		
 	}
 
 }

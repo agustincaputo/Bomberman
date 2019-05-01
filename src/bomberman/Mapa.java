@@ -18,17 +18,30 @@ public class Mapa {
 		this.crearPasillos();
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
-		this.crearPiedras();
-		
+		this.crearPiedras();		
 		
 		System.out.println(this);//borrar cuando esten todos los test!
 		Bomberman test = jugadores.get(0);//borrar cuando esten todos los test!
 		test.moverse("der", this);//borrar cuando ya este el keyEvent
 		System.out.println(this);//borrar cuando esten todos los test!
 		test.moverse("abajo", this);//borrar cuando esten todos los test!
-		System.out.println(this);//borrar cuando esten todos los test!
+		System.out.println(this);//borrar cuando esten todos los test!	
 		
-		test.ponerBomba(this);
+		
+		System.out.println(" PONGO A BOMBITA PARA VER QUE ONDA---------------");
+		Bomberman bombita = new Bomberman(1,3);
+		matrizMapa[1][3]=bombita;
+		
+		System.out.println(this);//borrar cuando esten todos los test!		
+		bombita.ponerBomba(this);
+		
+		System.out.println("BOMBITA EXPLOTA BOMBA------------------------------");
+		
+		System.out.println(this);//borrar cuando esten todos los test!
+
+		
+
+		
 	}
 	
 	public void setMatrizMapa(Entidad obj, int x, int y) {
