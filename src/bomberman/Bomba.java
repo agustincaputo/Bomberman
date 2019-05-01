@@ -57,6 +57,11 @@ public class Bomba extends Entidad{
 					mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
 					muerto.muere(mapa);
 				}
+				if(mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomba && !obstaculoAbajo) {
+					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()+i, this.getY());
+					encontrada.explotarBomba(mapa);
+					obstaculoAbajo=true;
+				}
 				//termino abajo	
 				//arriba:
 				if(mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bloque  && !obstaculoArriba) {
@@ -75,6 +80,11 @@ public class Bomba extends Entidad{
 					Bloque transitable = new Bloque("transitable",this.getX()-i,this.getY());
 					mapa.setMatrizMapa(transitable, this.getX()-i, this.getY());
 					muerto.muere(mapa);
+				}
+				if(mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomba && !obstaculoArriba) {
+					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()-i, this.getY());
+					encontrada.explotarBomba(mapa);
+					obstaculoArriba=true;
 				}
 				//termino arriba
 				//derecha:
@@ -95,6 +105,11 @@ public class Bomba extends Entidad{
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()+i);
 					muerto.muere(mapa);
 				}
+				if(mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomba && !obstaculoDerecha) {
+					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()+i);
+					encontrada.explotarBomba(mapa);
+					obstaculoDerecha=true;
+				}
 				//termina derecha
 				//izquierda:
 				if(mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bloque  && !obstaculoIzquierda) {
@@ -113,6 +128,11 @@ public class Bomba extends Entidad{
 					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()-i);
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()-i);
 					muerto.muere(mapa);
+				}
+				if(mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomba && !obstaculoIzquierda) {
+					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()-i);
+					encontrada.explotarBomba(mapa);
+					obstaculoIzquierda=true;
 				}
 				//termina izquierda
 		}
