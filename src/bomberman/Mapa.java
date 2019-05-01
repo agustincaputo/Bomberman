@@ -7,12 +7,12 @@ public class Mapa {
 
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
-	private Object matrizMapa[][];
+	private Entidad matrizMapa[][];
 	private ArrayList<Bomberman> jugadores;
 
 	
 	public Mapa(int cantBombermans) {
-		this.matrizMapa = new Object[FILMAX][COLMAX];
+		this.matrizMapa = new Entidad[FILMAX][COLMAX];
 		jugadores = new ArrayList<Bomberman>();
 		this.crearParedes();
 		this.crearPasillos();
@@ -20,17 +20,24 @@ public class Mapa {
 		this.crearObstaculos();
 		this.crearPiedras();
 		
+		
 		System.out.println(this);//borrar cuando esten todos los test!
 		Bomberman test = jugadores.get(0);//borrar cuando esten todos los test!
 		test.moverse("der", this);//borrar cuando ya este el keyEvent
 		System.out.println(this);//borrar cuando esten todos los test!
 		test.moverse("abajo", this);//borrar cuando esten todos los test!
 		System.out.println(this);//borrar cuando esten todos los test!
+		
+		test.ponerBomba(this);
 	}
 	
-	public void setMatrizMapa(Object obj, int x, int y) {
+	public void setMatrizMapa(Entidad obj, int x, int y) {
 		this.matrizMapa[x][y] = obj;
 	}
+	
+	public Entidad getPosicionMapa(int x, int y) {
+        return this.matrizMapa[x][y];
+    }
 	
 	@Override
 	public String toString() {
@@ -55,7 +62,6 @@ public class Mapa {
 		
 	}
 	public void crearParedes() {
-
 		for (int i = 0; i < FILMAX; i++) {
 			if (i == 0 || i == FILMAX - 1) {
 				for (int j = 0; j < COLMAX; j++) {

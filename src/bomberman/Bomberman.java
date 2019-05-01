@@ -1,5 +1,6 @@
 package bomberman;
 
+import java.nio.channels.InterruptedByTimeoutException;
 
 public class Bomberman extends Entidad{
 	
@@ -11,6 +12,17 @@ public class Bomberman extends Entidad{
 	private int posX=0;
 	private int posY=0;
 
+	public Bomberman(int x , int y ) {
+		super(x,y);
+		this.vivo = true;
+		this.velocidad=1;
+		this.puntos=0;
+		this.cantMuertes=0;
+		this.cantBombas=1;
+		this.posX=x;
+		this.posY=y;
+	}
+	
 	public boolean isVivo() {
 		return vivo;
 	}
@@ -72,19 +84,15 @@ public class Bomberman extends Entidad{
 		this.cantBombas = cantBombas;
 	}
 
-	public Bomberman(int x , int y ) {
-		super(x,y);
-		this.vivo = true;
-		this.velocidad=1;
-		this.puntos=0;
-		this.cantMuertes=0;
-		this.cantBombas=1;
-		this.posX=x;
-		this.posY=y;
-	}
-	
-	public Bomba ponerBomba(int x, int y) {
-		Bomba nueva = new Bomba(x,y);		
+	public Bomba ponerBomba(Mapa mapa) {
+		Bomba nueva = new Bomba(posX,posY);//aca la ubico en el mapa (en el mismo lugar que el bomberman)	
+		
+		try {
+			Thread.sleep(nueva.getTiempoDeEjecucion()*1000);//delay
+		} catch (InterruptedException e) {
+			System.out.println("fallo de delay en ponerBomba");
+		}
+//		nueva.explotarBomba(mapa);//aca la exploto despues del delay
 		return nueva;		
 	}
 	
@@ -125,6 +133,12 @@ public class Bomberman extends Entidad{
 					mapa.setMatrizMapa(this, posX, posY);
 				}
 		}	
+	}
+	
+	public void muere() {
+		this.cantMuertes++;
+		this.posX=this.getX();
+		this.posY=this.getY();
 	}
 
 }
