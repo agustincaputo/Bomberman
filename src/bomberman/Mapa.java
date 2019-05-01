@@ -25,10 +25,10 @@ public class Mapa {
 		Bomberman test = jugadores.get(0);//borrar cuando esten todos los test!
 		test.moverse("der", this);//borrar cuando ya este el keyEvent
 		System.out.println(this);//borrar cuando esten todos los test!
-		test.moverse("abajo", this);//borrar cuando esten todos los test!
+		test.moverse("abajo", this);//borrar cuando ya este el keyEvent
 		System.out.println(this);//borrar cuando esten todos los test!
 		
-		test.ponerBomba(this);
+		//test.ponerBomba(this);//borrar cuando esten todos los test!
 	}
 	
 	public void setMatrizMapa(Entidad obj, int x, int y) {
