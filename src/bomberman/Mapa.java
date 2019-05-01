@@ -103,19 +103,22 @@ public class Mapa {
 		int cantPiedras = 38;
 		int vecFila[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		int vecCol[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-		int randomFil;
-		int randomCol;
+		int ranF;
+		int ranC;
 		int i = 0;
-
+		
 		while (i != cantPiedras) {
-			randomFil = vecFila[ThreadLocalRandom.current().nextInt(0, 8 + 1)];
-			randomCol = vecCol[ThreadLocalRandom.current().nextInt(0, 12 + 1)];
-			if (matrizMapa[randomFil][randomCol] instanceof Bloque) {
-				if(((Bloque)matrizMapa[randomFil][randomCol]).queTipo()=="transitable"){
-					//if(randomFil != 1)
-					Bloque piedra = new Bloque("piedra", randomFil, randomCol);
-					matrizMapa[randomFil][randomCol] = piedra;
-					i++;
+			ranF = vecFila[ThreadLocalRandom.current().nextInt(0, 8 + 1)];
+			ranC = vecCol[ThreadLocalRandom.current().nextInt(0, 12 + 1)];
+			if (matrizMapa[ranF][ranC] instanceof Bloque) {
+				if(((Bloque)matrizMapa[ranF][ranC]).queTipo()=="transitable"){
+					if(!(ranF==1 && ranC==2) && !(ranF==2 && ranC==1) && !(ranF==1 && ranC==12) && !(ranF==2 && ranC==13) && !(ranF==8 && ranC==1) && !(ranF==9 && ranC==2) && !(ranF==9 && ranC==12) && !(ranF==8 && ranC==13)) {
+						//hermoso if
+						//el if hace que no se puedan poner piedras al lado del bomberman y se quede sin poder moverse 
+						Bloque piedra = new Bloque("piedra", ranF, ranC);
+						matrizMapa[ranF][ranC] = piedra;
+						i++;
+					}
 				}
 			}
 		}
