@@ -1,5 +1,8 @@
 package bomberman;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 public class Bomberman extends Entidad{
 	
 	private boolean vivo;
@@ -80,15 +83,27 @@ public class Bomberman extends Entidad{
 		this.cantBombas=1;
 	}
 	
-	public void moverse(int direccion) {
-		int x = this.posX;
-		int y = this.posY;	
-		
-	}
-	
 	public Bomba ponerBomba(int x, int y) {
 		Bomba nueva = new Bomba(x,y);		
 		return nueva;		
+	}
+	
+//	public void moverse(String direccion) {
+//		
+//		switch(direccion){
+//		
+//			case "arriba":
+//				if()
+//			
+//			
+//			case "abajo":
+//			
+//			case "izq":
+//			
+//			case "der":
+//		
+//		}
+		
 	}
 
 	

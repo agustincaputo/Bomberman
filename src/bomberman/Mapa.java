@@ -14,16 +14,18 @@ public class Mapa {
 		this.matrizMapa = new Object[FILMAX][COLMAX];
 		jugadores = new ArrayList<Bomberman>();
 		this.crearParedes();
+		this.crearPasillos();
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();
+		
 	}
 
 	@Override
 	public String toString() {
 		for (int i = 0; i < FILMAX; i++) {
 			for (int j = 0; j < COLMAX; j++) {
-				System.out.print(String.format("%-10s", matrizMapa[i][j]) + "|");
+				System.out.print(String.format("%-15s", matrizMapa[i][j]) + "|");
 			}
 			System.out.println("\n");
 		}
@@ -31,6 +33,16 @@ public class Mapa {
 		return "";
 	}
 
+	public void crearPasillos() {
+		for(int i=1; i<FILMAX-1 ;i++) {
+			for(int j=1; j<COLMAX-1; j++) {
+				Bloque transitable = new Bloque ("transitable",i,j);
+				matrizMapa[i][j]= transitable;
+			}
+		}
+			
+		
+	}
 	public void crearParedes() {
 
 		for (int i = 0; i < FILMAX; i++) {
@@ -88,15 +100,22 @@ public class Mapa {
 		int i = 0;
 
 		while (i != cantPiedras) {
-
 			randomFil = vecFila[ThreadLocalRandom.current().nextInt(0, 8 + 1)];
 			randomCol = vecCol[ThreadLocalRandom.current().nextInt(0, 12 + 1)];
-			if (matrizMapa[randomFil][randomCol] == null) {
-				Bloque piedra = new Bloque("piedra", randomFil, randomCol);
-				matrizMapa[randomFil][randomCol] = piedra;
-				i++;
+			if (matrizMapa[randomFil][randomCol] instanceof Bloque) {
+				if(((Bloque)matrizMapa[randomFil][randomCol]).queTipo()=="transitable"){
+					Bloque piedra = new Bloque("piedra", randomFil, randomCol);
+					matrizMapa[randomFil][randomCol] = piedra;
+					i++;
+				}
 			}
-
 		}
 	}
+	
+	public boolean esTransitable(int x, int y) {
+		if(((Bloque)matrizMapa[x][y]).queTipo()=="transitable")
+			return true;
+		return false;
+	}
+	
 }

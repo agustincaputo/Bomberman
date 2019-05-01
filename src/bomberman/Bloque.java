@@ -13,4 +13,8 @@ public class Bloque extends Entidad{
 	public String toString() {
 		return tipoBloque;
 	}
+	
+	public String queTipo() {
+		return this.tipoBloque;
+	}
 }
