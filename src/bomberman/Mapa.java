@@ -10,6 +10,7 @@ public class Mapa {
 	private Object matrizMapa[][];
 	private ArrayList<Bomberman> jugadores;
 
+	
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Object[FILMAX][COLMAX];
 		jugadores = new ArrayList<Bomberman>();
@@ -18,9 +19,16 @@ public class Mapa {
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();
-		
+		System.out.println(this);
+		Bomberman test = jugadores.get(0);
+		test.moverse("der", this);
+		System.out.println(this);
 	}
-
+	
+	public void setMatrizMapa(Object obj, int x, int y) {
+		this.matrizMapa[x][y] = obj;
+	}
+	
 	@Override
 	public String toString() {
 		for (int i = 0; i < FILMAX; i++) {
@@ -117,5 +125,7 @@ public class Mapa {
 			return true;
 		return false;
 	}
+	
+	
 	
 }
