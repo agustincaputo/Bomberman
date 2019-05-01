@@ -19,9 +19,12 @@ public class Mapa {
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();
+		
 		System.out.println(this);//borrar cuando esten todos los test!
 		Bomberman test = jugadores.get(0);//borrar cuando esten todos los test!
 		test.moverse("der", this);//borrar cuando ya este el keyEvent
+		System.out.println(this);//borrar cuando esten todos los test!
+		test.moverse("abajo", this);//borrar cuando esten todos los test!
 		System.out.println(this);//borrar cuando esten todos los test!
 	}
 	
