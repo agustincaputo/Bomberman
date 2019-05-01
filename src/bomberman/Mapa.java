@@ -19,10 +19,10 @@ public class Mapa {
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();
-		System.out.println(this);
-		Bomberman test = jugadores.get(0);
-		test.moverse("der", this);
-		System.out.println(this);
+		System.out.println(this);//borrar cuando esten todos los test!
+		Bomberman test = jugadores.get(0);//borrar cuando esten todos los test!
+		test.moverse("der", this);//borrar cuando ya este el keyEvent
+		System.out.println(this);//borrar cuando esten todos los test!
 	}
 	
 	public void setMatrizMapa(Object obj, int x, int y) {
@@ -112,6 +112,7 @@ public class Mapa {
 			randomCol = vecCol[ThreadLocalRandom.current().nextInt(0, 12 + 1)];
 			if (matrizMapa[randomFil][randomCol] instanceof Bloque) {
 				if(((Bloque)matrizMapa[randomFil][randomCol]).queTipo()=="transitable"){
+					//if(randomFil != 1)
 					Bloque piedra = new Bloque("piedra", randomFil, randomCol);
 					matrizMapa[randomFil][randomCol] = piedra;
 					i++;
