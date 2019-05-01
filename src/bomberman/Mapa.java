@@ -39,13 +39,9 @@ public class Mapa {
 		System.out.println("BOMBITA EXPLOTA BOMBA------------------------------");
 		
 
-		test.moverse("abajo", this);//borrar cuando ya este el keyEvent
+		
 
 		System.out.println(this);//borrar cuando esten todos los test!
-
-		
-
-		
 
 
 		//test.ponerBomba(this);//borrar cuando esten todos los test!
