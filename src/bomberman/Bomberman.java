@@ -124,10 +124,7 @@ public class Bomberman extends Entidad{
 					this.posX++;
 					mapa.setMatrizMapa(this, posX, posY);
 				}
-		
-		}
-		
+		}	
 	}
 
-	
 }
