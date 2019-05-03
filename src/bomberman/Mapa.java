@@ -5,12 +5,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Mapa {
 
+
 	public static final int COLMAX = 15;
 	public static final int FILMAX = 11;
 	private Entidad matrizMapa[][];
 	private ArrayList<Bomberman> jugadores;
 
-	
+
 	public Mapa(int cantBombermans) {
 		this.matrizMapa = new Entidad[FILMAX][COLMAX];
 		jugadores = new ArrayList<Bomberman>();
@@ -19,39 +20,36 @@ public class Mapa {
 		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();		
-		
-		System.out.println(this);//borrar cuando esten todos los test!
-		Bomberman test = jugadores.get(0);//borrar cuando esten todos los test!
-		test.moverse("der", this);//borrar cuando ya este el keyEvent
-		System.out.println(this);//borrar cuando esten todos los test!
 
-		test.moverse("abajo", this);//borrar cuando esten todos los test!
-		System.out.println(this);//borrar cuando esten todos los test!	
-		
-		
-		System.out.println(" PONGO A BOMBITA PARA VER QUE ONDA---------------");
-		Bomberman bombita = new Bomberman(1,3);
-		matrizMapa[1][3]=bombita;
-		
-		System.out.println(this);//borrar cuando esten todos los test!		
-		bombita.ponerBomba(this);
-		
-		System.out.println("BOMBITA EXPLOTA BOMBA------------------------------");
-		
-		System.out.println(this);//borrar cuando esten todos los test!
+//		System.out.println(this);
+//		Bomberman test = jugadores.get(0);
+//		test.moverse("der", this);
+//		System.out.println(this);
+//		test.moverse("abajo", this);//borrar cuando esten todos los test!
+//		System.out.println(this);//borrar cuando esten todos los test!	
+//
+//
+//		System.out.println(" PONGO A BOMBITA PARA VER QUE ONDA---------------");
+//		Bomberman bombita = new Bomberman(1,3);
+//		matrizMapa[1][3]=bombita;
+//
+//		System.out.println(this);//borrar cuando esten todos los test!		
+//		bombita.ponerBomba(this);
+//
+//		System.out.println("BOMBITA EXPLOTA BOMBA------------------------------");
+//
+//		System.out.println(this);//borrar cuando esten todos los test!
 
-
-		//test.ponerBomba(this);//borrar cuando esten todos los test!
 	}
-	
+
 	public void setMatrizMapa(Entidad obj, int x, int y) {
 		this.matrizMapa[x][y] = obj;
 	}
-	
+
 	public Entidad getPosicionMapa(int x, int y) {
-        return this.matrizMapa[x][y];
-    }
-	
+		return this.matrizMapa[x][y];
+	}
+
 	@Override
 	public String toString() {
 		for (int i = 0; i < FILMAX; i++) {
@@ -71,8 +69,8 @@ public class Mapa {
 				matrizMapa[i][j]= transitable;
 			}
 		}
-			
-		
+
+
 	}
 	public void crearParedes() {
 		for (int i = 0; i < FILMAX; i++) {
@@ -128,7 +126,7 @@ public class Mapa {
 		int ranF;
 		int ranC;
 		int i = 0;
-		
+
 		while (i != cantPiedras) {
 			ranF = vecFila[ThreadLocalRandom.current().nextInt(0, 8 + 1)];
 			ranC = vecCol[ThreadLocalRandom.current().nextInt(0, 12 + 1)];
@@ -145,13 +143,28 @@ public class Mapa {
 			}
 		}
 	}
-	
+
 	public boolean esTransitable(int x, int y) {
 		if(((Bloque)matrizMapa[x][y]).queTipo()=="transitable")
 			return true;
 		return false;
 	}
-	
-	
-	
+
+
+
+	public Entidad[][] getMatrizMapa() {
+		return matrizMapa;
+	}
+
+	public void setMatrizMapa(Entidad[][] matrizMapa) {
+		this.matrizMapa = matrizMapa;
+	}
+
+	public ArrayList<Bomberman> getJugadores() {
+		return jugadores;
+	}
+
+	public void setJugadores(ArrayList<Bomberman> jugadores) {
+		this.jugadores = jugadores;
+	}
 }
