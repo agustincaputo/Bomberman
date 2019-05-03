@@ -138,7 +138,7 @@ public class TestDelJuego {
 		Bloque tran = new Bloque("transitable",1,4);
 		mapa.setMatrizMapa(tran, 1, 4);//lo pongo para que siempre pueda poner una bomba ahi
 		System.out.println(mapa);
-		mapa.setMatrizMapa(nuevo,1,3);//pongo un bomber en el mapa (recordar que tiene rango 3)
+		mapa.setMatrizMapa(nuevo,1,3);//pongo un bomber en el mapa (recordar que la bomba tiene rango 3)
 		nuevo.ponerBomba(mapa);
 		//testear: -desde la pos donde puse la bomba (1,4) fijarse si habia piedra en algun lado (dentro de su rango) la rompio y corroborar que no siguio rompiendo,
 		//si habia bomberman en algun lado y lo mato y le reinicio su pos.
