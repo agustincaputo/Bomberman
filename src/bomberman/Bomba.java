@@ -29,7 +29,7 @@ public class Bomba extends Entidad{
 
 	public Bomba(int x, int y) {
 		super(x,y);
-		this.rango=1;
+		this.rango=3;
 		this.tiempoDeEjecucion=3;		
 	}
 	
@@ -40,7 +40,7 @@ public class Bomba extends Entidad{
 			for(i=0;i<=this.rango;i++) 
 			{
 				//abajo:
-				if(mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bloque  && !obstaculoAbajo) {
+				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bloque) {
 					if(((Bloque)mapa.getPosicionMapa(this.getX()+i, this.getY())).queTipo()=="pared" ||
 							((Bloque)mapa.getPosicionMapa(this.getX()+i, this.getY())).queTipo()=="obstaculo") {
 						obstaculoAbajo=true;
@@ -51,20 +51,20 @@ public class Bomba extends Entidad{
 						obstaculoAbajo=true;
 					}	
 				}
-				if(mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomberman && !obstaculoAbajo) {
+				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomberman) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()+i, this.getY());
 					Bloque transitable = new Bloque("transitable",this.getX()+i,this.getY());
 					mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
 					muerto.muere(mapa);
 				}
-				if(mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomba && !obstaculoAbajo) {
+				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomba) {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()+i, this.getY());
 					encontrada.explotarBomba(mapa);
 					obstaculoAbajo=true;
 				}
 				//termino abajo	
 				//arriba:
-				if(mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bloque  && !obstaculoArriba) {
+				if(obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bloque) {
 					if(((Bloque)mapa.getPosicionMapa(this.getX()-i, this.getY())).queTipo()=="pared" ||
 							((Bloque)mapa.getPosicionMapa(this.getX()-i, this.getY())).queTipo()=="obstaculo") {
 						obstaculoArriba=true;
@@ -75,20 +75,20 @@ public class Bomba extends Entidad{
 						obstaculoArriba=true;
 					}	
 				}
-				if(mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomberman && !obstaculoArriba) {
+				if(obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomberman ) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()-i, this.getY());
 					Bloque transitable = new Bloque("transitable",this.getX()-i,this.getY());
 					mapa.setMatrizMapa(transitable, this.getX()-i, this.getY());
 					muerto.muere(mapa);
 				}
-				if(mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomba && !obstaculoArriba) {
+				if(obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomba ) {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()-i, this.getY());
 					encontrada.explotarBomba(mapa);
 					obstaculoArriba=true;
 				}
 				//termino arriba
 				//derecha:
-				if(mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bloque  && !obstaculoDerecha) {
+				if(obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bloque ) {
 					if(((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()+i)).queTipo()=="pared" ||
 							((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()+i)).queTipo()=="obstaculo") {
 						obstaculoDerecha=true;
@@ -99,20 +99,20 @@ public class Bomba extends Entidad{
 						obstaculoDerecha=true;
 					}	
 				}
-				if(mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomberman && !obstaculoDerecha) {
+				if(obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomberman) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX(), this.getY()+i);
 					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()+i);
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()+i);
 					muerto.muere(mapa);
 				}
-				if(mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomba && !obstaculoDerecha) {
+				if(obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomba)  {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()+i);
 					encontrada.explotarBomba(mapa);
 					obstaculoDerecha=true;
 				}
 				//termina derecha
 				//izquierda:
-				if(mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bloque  && !obstaculoIzquierda) {
+				if(obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bloque) {
 					if(((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()-i)).queTipo()=="pared" ||
 							((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()-i)).queTipo()=="obstaculo") {
 						obstaculoIzquierda=true;
@@ -123,13 +123,13 @@ public class Bomba extends Entidad{
 						obstaculoIzquierda=true;
 					}	
 				}
-				if(mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomberman && !obstaculoIzquierda) {
+				if(obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomberman) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX(), this.getY()-i);
 					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()-i);
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()-i);
 					muerto.muere(mapa);
 				}
-				if(mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomba && !obstaculoIzquierda) {
+				if(obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomba) {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()-i);
 					encontrada.explotarBomba(mapa);
 					obstaculoIzquierda=true;
