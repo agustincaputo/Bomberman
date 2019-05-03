@@ -133,7 +133,7 @@ public class TestDelJuego {
 		ArrayList<Bomberman> players =  mapa.getJugadores();
 		players.get(0).moverse("der", mapa);
 		
-		System.out.println(mapa);
+		System.out.println(mapa);//borrar cuando terminen este test
 		Bomberman nuevo = new Bomberman(1,3);
 		Bloque tran = new Bloque("transitable",1,4);
 		mapa.setMatrizMapa(tran, 1, 4);//lo pongo para que siempre pueda poner una bomba ahi
@@ -147,7 +147,7 @@ public class TestDelJuego {
 		
 		
 		
-		System.out.println(mapa);
+		System.out.println(mapa);//borrar cuando terminen este test
 		
 	}
 
