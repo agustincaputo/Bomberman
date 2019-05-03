@@ -57,7 +57,7 @@ public class Bomba extends Entidad{
 					mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
 					muerto.muere(mapa);
 				}
-				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomba) {
+				if(i!=0 && obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomba) {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()+i, this.getY());
 					encontrada.explotarBomba(mapa);
 					obstaculoAbajo=true;
@@ -81,7 +81,7 @@ public class Bomba extends Entidad{
 					mapa.setMatrizMapa(transitable, this.getX()-i, this.getY());
 					muerto.muere(mapa);
 				}
-				if(obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomba ) {
+				if(i!=0 && obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomba ) {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()-i, this.getY());
 					encontrada.explotarBomba(mapa);
 					obstaculoArriba=true;
@@ -105,7 +105,7 @@ public class Bomba extends Entidad{
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()+i);
 					muerto.muere(mapa);
 				}
-				if(obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomba)  {
+				if(i!=0 && obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomba)  {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()+i);
 					encontrada.explotarBomba(mapa);
 					obstaculoDerecha=true;
@@ -129,12 +129,18 @@ public class Bomba extends Entidad{
 					mapa.setMatrizMapa(transitable, this.getX(), this.getY()-i);
 					muerto.muere(mapa);
 				}
-				if(obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomba) {
+				if(i!=0 && obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomba) {
 					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()-i);
 					encontrada.explotarBomba(mapa);
 					obstaculoIzquierda=true;
 				}
 				//termina izquierda
 		}
+	}
+
+
+	@Override
+	public String toString() {
+		return "Bomba";
 	}
 }

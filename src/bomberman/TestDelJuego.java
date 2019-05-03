@@ -132,7 +132,11 @@ public class TestDelJuego {
 		Mapa mapa = new Mapa(2);
 		ArrayList<Bomberman> players =  mapa.getJugadores();
 //		players.get(1);
+		players.get(0).moverse("der", mapa);
+		System.out.println(mapa);
 		Bomberman nuevo = new Bomberman(1,3);
+		Bloque tran = new Bloque("transitable",1,4);
+		mapa.setMatrizMapa(tran, 1, 4);
 		System.out.println(mapa);
 		mapa.setMatrizMapa(nuevo,1,3);
 		nuevo.ponerBomba(mapa);
