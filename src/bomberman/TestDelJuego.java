@@ -131,15 +131,22 @@ public class TestDelJuego {
 	public void deBomba() {
 		Mapa mapa = new Mapa(2);
 		ArrayList<Bomberman> players =  mapa.getJugadores();
-//		players.get(1);
 		players.get(0).moverse("der", mapa);
+		
 		System.out.println(mapa);
 		Bomberman nuevo = new Bomberman(1,3);
 		Bloque tran = new Bloque("transitable",1,4);
-		mapa.setMatrizMapa(tran, 1, 4);
+		mapa.setMatrizMapa(tran, 1, 4);//lo pongo para que siempre pueda poner una bomba ahi
 		System.out.println(mapa);
-		mapa.setMatrizMapa(nuevo,1,3);
+		mapa.setMatrizMapa(nuevo,1,3);//pongo un bomber en el mapa (recordar que tiene rango 3)
 		nuevo.ponerBomba(mapa);
+		//testear: -desde la pos donde puse la bomba (1,4) fijarse si habia piedra en algun lado (dentro de su rango) la rompio y corroborar que no siguio rompiendo,
+		//si habia bomberman en algun lado y lo mato y le reinicio su pos.
+		//si los obstaculos y las paredes no se rompieron.
+		//si los obstaculos paran la llama de la bomba (testear que no muera el bomberman detras de un obstaculo).
+		
+		
+		
 		System.out.println(mapa);
 		
 	}
