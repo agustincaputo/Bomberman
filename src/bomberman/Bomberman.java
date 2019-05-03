@@ -85,15 +85,19 @@ public class Bomberman extends Entidad{
 	}
 
 	public Bomba ponerBomba(Mapa mapa) {
-		Bomba nueva = new Bomba(posX,posY);//aca la ubico en el mapa (en el mismo lugar que el bomberman)	
-		
-		try {
-			Thread.sleep(nueva.getTiempoDeEjecucion()*1000);//delay
-		} catch (InterruptedException e) {
-			System.out.println("fallo de delay en ponerBomba");
+		if(mapa.esTransitable(posX, posY+1)) {
+			Bomba nueva = new Bomba(posX,posY+1);//aca la ubico en el mapa (en el mismo lugar que el bomberman)	
+			mapa.setMatrizMapa(nueva, posX, posY+1);
+			
+			try {
+				Thread.sleep(nueva.getTiempoDeEjecucion()*1000);//delay
+			} catch (InterruptedException e) {
+				System.out.println("fallo de delay en ponerBomba");
+			}
+			nueva.explotarBomba(mapa);//aca la exploto despues del delay
+			return nueva;	
 		}
-		nueva.explotarBomba(mapa);//aca la exploto despues del delay
-		return nueva;		
+		return null;
 	}
 	
 	public void moverse(String direccion, Mapa mapa) {
