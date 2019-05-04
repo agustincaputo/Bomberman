@@ -87,16 +87,16 @@ public class Bomberman extends Entidad{
 	public Bomba ponerBomba(Mapa mapa) {
 		if(mapa.esTransitable(posX, posY+1)) {
 			Bomba nueva = new Bomba(posX,posY+1);//aca la ubico en el mapa (en el mismo lugar que el bomberman)	
-			mapa.setMatrizMapa(nueva, posX, posY+1);
+			mapa.setMatrizMapa(nueva, posX, posY+1);//la muestro en la interfaz
 			
 			try {
 				Thread.sleep(nueva.getTiempoDeEjecucion()*1000);//delay
 			} catch (InterruptedException e) {
 				System.out.println("fallo de delay en ponerBomba");
 			}
+
 			nueva.explotarBomba(mapa);//aca la exploto despues del delay
-			Bloque espacio = new Bloque("transitable",posX,posY+1);
-			mapa.setMatrizMapa(espacio, posX, posY+1);
+			
 			return nueva;	
 		}
 		return null;
@@ -142,11 +142,10 @@ public class Bomberman extends Entidad{
 	}
 	
 	public void muere(Mapa mapa) {
-		this.cantMuertes++;
+		this.cantMuertes+=1;
 		this.posX=this.getX();
 		this.posY=this.getY();
 		mapa.setMatrizMapa(this, posX, posY);
-		
 	}
 
 }

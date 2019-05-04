@@ -17,4 +17,8 @@ public class Bloque extends Entidad{
 	public String queTipo() {
 		return this.tipoBloque;
 	}
+	
+	public void explotarPiedra() {
+		this.tipoBloque="transitable";
+	}
 }

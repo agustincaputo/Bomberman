@@ -13,9 +13,9 @@ public class Juego {
 	}		
 	public void bucleJuego() {
 		//aca se hace el juego
-		while(true) {
-			
-		}
+//		while(true) {
+//			
+//		}
 	}
 
 	
