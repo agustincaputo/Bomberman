@@ -125,41 +125,41 @@ public class TestDelJuego {
 		}	
 	}
 	
-	@Test
-	public void deBomba() {
-		Mapa mapa = new Mapa(2);
-		ArrayList<Bomberman> players =  mapa.getJugadores();
-		//players.get(0).moverse("der", mapa);
-		
-		//System.out.println(mapa);//borrar cuando terminen este test
-		Bomberman bomberman1 = new Bomberman(1,1);
-		Bomberman bomberman2 = new Bomberman(1,4);
-		
-		Bloque tran = new Bloque("transitable",1,2);
-		Bloque piedra1 = new Bloque("piedra",1,3);
-		mapa.setMatrizMapa(piedra1,1,3);
-		mapa.setMatrizMapa(bomberman2,1,4);
-		mapa.setMatrizMapa(tran, 1,2);//lo pongo para que siempre pueda poner una bomba ahi
-		mapa.setMatrizMapa(bomberman1,1,1);//pongo un bomber en el mapa (recordar que la bomba tiene rango 3)
-		
-		System.out.println(mapa);
-		
-		bomberman1.ponerBomba(mapa);
-		
-	    
-	    System.out.println(mapa);//borrar cuando terminen este test
-	    assertEquals(1,bomberman1.getCantMuertes());
-	    assertEquals(1,bomberman2.getCantMuertes());
-	    assertEquals("transitable",((Bloque) (mapa.getPosicionMapa(1,3))).queTipo());
-		//testear: -desde la pos donde puse la bomba (1,4) fijarse si habia piedra en algun lado (dentro de su rango) la rompio y corroborar que no siguio rompiendo,
-		//si habia bomberman en algun lado y lo mato y le reinicio su pos.
-		//si los obstaculos y las paredes no se rompieron.
-		//si los obstaculos paran la llama de la bomba (testear que no muera el bomberman detras de un obstaculo).
-		
-		
-		
-		
-		
-	}
+//	@Test
+//	public void deBomba() {
+//		Mapa mapa = new Mapa(2);
+//		ArrayList<Bomberman> players =  mapa.getJugadores();
+//		//players.get(0).moverse("der", mapa);
+//		
+//		//System.out.println(mapa);//borrar cuando terminen este test
+//		Bomberman bomberman1 = new Bomberman(1,1);
+//		Bomberman bomberman2 = new Bomberman(1,4);
+//		
+//		Bloque tran = new Bloque("transitable",1,2);
+//		Bloque piedra1 = new Bloque("piedra",1,3);
+//		mapa.setMatrizMapa(piedra1,1,3);
+//		mapa.setMatrizMapa(bomberman2,1,4);
+//		mapa.setMatrizMapa(tran, 1,2);//lo pongo para que siempre pueda poner una bomba ahi
+//		mapa.setMatrizMapa(bomberman1,1,1);//pongo un bomber en el mapa (recordar que la bomba tiene rango 3)
+//		
+//		System.out.println(mapa);
+//		
+//		bomberman1.ponerBomba(mapa);
+//		
+//	    
+//	    System.out.println(mapa);//borrar cuando terminen este test
+//	    assertEquals(1,bomberman1.getCantMuertes());
+//	    assertEquals(1,bomberman2.getCantMuertes());
+//	    assertEquals("transitable",((Bloque) (mapa.getPosicionMapa(1,3))).queTipo());
+//		//testear: -desde la pos donde puse la bomba (1,4) fijarse si habia piedra en algun lado (dentro de su rango) la rompio y corroborar que no siguio rompiendo,
+//		//si habia bomberman en algun lado y lo mato y le reinicio su pos.
+//		//si los obstaculos y las paredes no se rompieron.
+//		//si los obstaculos paran la llama de la bomba (testear que no muera el bomberman detras de un obstaculo).
+//		
+//		
+//		
+//		
+//		
+//	}
 
 }
