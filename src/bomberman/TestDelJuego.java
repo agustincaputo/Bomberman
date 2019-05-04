@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import junit.framework.Assert;
-
 public class TestDelJuego {
 
 	@Test
@@ -134,12 +132,22 @@ public class TestDelJuego {
 		players.get(0).moverse("der", mapa);
 		
 		System.out.println(mapa);//borrar cuando terminen este test
-		Bomberman nuevo = new Bomberman(1,3);
+		Bomberman bomberman1 = new Bomberman(1,3);
+		Bomberman bomberman2 = new Bomberman(2,4);
 		Bloque tran = new Bloque("transitable",1,4);
-		mapa.setMatrizMapa(tran, 1, 4);//lo pongo para que siempre pueda poner una bomba ahi
+		Bloque piedra1 = new Bloque("piedra",1,6);
+		Bloque piedra2 = new Bloque("obstaculo",1,5);
+		Bloque piedra3 = new Bloque("piedra",1,2);
+		
+		mapa.setMatrizMapa(piedra1,1,6);
+		mapa.setMatrizMapa(piedra2,1,5);
+		mapa.setMatrizMapa(piedra3,1,2);
+		mapa.setMatrizMapa(bomberman2,2,4);
+		mapa.setMatrizMapa(tran, 1,4);//lo pongo para que siempre pueda poner una bomba ahi
 		System.out.println(mapa);
-		mapa.setMatrizMapa(nuevo,1,3);//pongo un bomber en el mapa (recordar que la bomba tiene rango 3)
-		nuevo.ponerBomba(mapa);
+		mapa.setMatrizMapa(bomberman1,1,3);//pongo un bomber en el mapa (recordar que la bomba tiene rango 3)
+		bomberman1.ponerBomba(mapa);
+	    
 		//testear: -desde la pos donde puse la bomba (1,4) fijarse si habia piedra en algun lado (dentro de su rango) la rompio y corroborar que no siguio rompiendo,
 		//si habia bomberman en algun lado y lo mato y le reinicio su pos.
 		//si los obstaculos y las paredes no se rompieron.

@@ -50,7 +50,7 @@ public class Bomba extends Entidad{
 						mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
 						obstaculoAbajo=true;
 					}	
-				}
+				}				
 				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomberman) {
 					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()+i, this.getY());
 					Bloque transitable = new Bloque("transitable",this.getX()+i,this.getY());
