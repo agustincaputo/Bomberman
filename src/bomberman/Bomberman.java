@@ -95,6 +95,8 @@ public class Bomberman extends Entidad{
 				System.out.println("fallo de delay en ponerBomba");
 			}
 			nueva.explotarBomba(mapa);//aca la exploto despues del delay
+			Bloque espacio = new Bloque("transitable",posX,posY+1);
+			mapa.setMatrizMapa(espacio, posX, posY+1);
 			return nueva;	
 		}
 		return null;
