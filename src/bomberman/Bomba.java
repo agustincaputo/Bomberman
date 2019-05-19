@@ -36,7 +36,7 @@ public class Bomba extends Entidad {
 			Bloque transit = new Bloque("transitable",this.getX(),this.getY());
 			mapa.setMatrizMapa(transit, this.getX(), this.getY());//saco la bomba de la interfaz
 			
-			for(int i=0;i<=this.rango;i++) 
+			for(int i=0;i<this.rango;i++) 
 			{
 				for(int j=0; j<deltas.length;j++) {
 					dx=this.getX()+(deltas[j][0]);
