@@ -11,6 +11,8 @@ public class Bomberman extends Entidad{
 	private int cantBombas;	
 	private int posX=0;
 	private int posY=0;
+	
+	
 
 	public Bomberman(int x , int y ) {
 		super(x,y);
@@ -87,66 +89,48 @@ public class Bomberman extends Entidad{
 	public Bomba ponerBomba(Mapa mapa) {
 		if(mapa.esTransitable(posX, posY+1)) {
 			Bomba nueva = new Bomba(posX,posY+1);//aca la ubico en el mapa (en el mismo lugar que el bomberman)	
-			mapa.setMatrizMapa(nueva, posX, posY+1);
-			
-			try {
-				Thread.sleep(nueva.getTiempoDeEjecucion()*1000);//delay
-			} catch (InterruptedException e) {
-				System.out.println("fallo de delay en ponerBomba");
-			}
-			nueva.explotarBomba(mapa);//aca la exploto despues del delay
-			Bloque espacio = new Bloque("transitable",posX,posY+1);
-			mapa.setMatrizMapa(espacio, posX, posY+1);
+			mapa.setMatrizMapa(nueva, posX, posY+1);//la muestro en la interfaz
+		
+			nueva.explotarBomba(mapa);
 			return nueva;	
 		}
 		return null;
 	}
 	
-	public void moverse(String direccion, Mapa mapa) {
-		switch(direccion){
-			case "izq": 
-				if(mapa.esTransitable(this.posX,this.posY-1)) {
-					Bloque transitable = new Bloque("transitable", posX, posY);
-					mapa.setMatrizMapa(transitable,posX,posY);
-					this.posY--;
-					mapa.setMatrizMapa(this, posX, posY);
-				}
-			break;
-			
-			case "der":
-				if(mapa.esTransitable(this.posX,this.posY+1)) {
-					Bloque transitable = new Bloque("transitable", posX, posY);
-					mapa.setMatrizMapa(transitable,posX,posY);
-					this.posY++;
-					mapa.setMatrizMapa(this, posX, posY);
-				}
-			break;	
-			
-			case "arriba":
-				if(mapa.esTransitable(this.posX-1,this.posY)) {
-					Bloque transitable = new Bloque("transitable", posX, posY);
-					mapa.setMatrizMapa(transitable,posX,posY);
-					this.posX--;
-					mapa.setMatrizMapa(this, posX, posY);
-				}
-			break;
-			
-			case "abajo":
-				if(mapa.esTransitable(this.posX+1,this.posY)) {
-					Bloque transitable = new Bloque("transitable", posX, posY);
-					mapa.setMatrizMapa(transitable,posX,posY);
-					this.posX++;
-					mapa.setMatrizMapa(this, posX, posY);
-				}
+	
+	public void moverse(Moverse mov, Mapa mapa) {
+		int dY = mov.getParametroY();
+		int dX = mov.getParametroX();
+		//hola
+	
+		if(mapa.esTransitable(this.posX+dX,this.posY+dY)) {
+			Bloque transitable = new Bloque("transitable", posX, posY);
+			mapa.setMatrizMapa(transitable,posX,posY);
+			this.posY+=dY;
+			this.posX+=dX;
+			mapa.setMatrizMapa(this, posX, posY);
+			}
 		}	
-	}
+	
 	
 	public void muere(Mapa mapa) {
-		this.cantMuertes++;
+		this.cantMuertes+=1;
 		this.posX=this.getX();
 		this.posY=this.getY();
 		mapa.setMatrizMapa(this, posX, posY);
-		
 	}
-
+	
+	@Override
+	public boolean esBloque() {
+		return false;
+	}
+	@Override 
+	public boolean esBomberman() {
+		return true;
+	}
+	@Override 
+	public boolean esBomba() {
+		return false;
+	}
+	
 }

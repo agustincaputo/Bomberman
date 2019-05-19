@@ -12,33 +12,13 @@ public class Mapa {
 	private ArrayList<Bomberman> jugadores;
 
 
-	public Mapa(int cantBombermans) {
+	public Mapa() {
 		this.matrizMapa = new Entidad[FILMAX][COLMAX];
 		jugadores = new ArrayList<Bomberman>();
 		this.crearParedes();
 		this.crearPasillos();
-		this.crearPosBomberman(cantBombermans);
 		this.crearObstaculos();
 		this.crearPiedras();		
-
-//		System.out.println(this);
-//		Bomberman test = jugadores.get(0);
-//		test.moverse("der", this);
-//		System.out.println(this);
-//		test.moverse("abajo", this);//borrar cuando esten todos los test!
-//		System.out.println(this);//borrar cuando esten todos los test!	
-//
-//
-//		System.out.println(" PONGO A BOMBITA PARA VER QUE ONDA---------------");
-//		Bomberman bombita = new Bomberman(1,3);
-//		matrizMapa[1][3]=bombita;
-//
-//		System.out.println(this);//borrar cuando esten todos los test!		
-//		bombita.ponerBomba(this);
-//
-//		System.out.println("BOMBITA EXPLOTA BOMBA------------------------------");
-//
-//		System.out.println(this);//borrar cuando esten todos los test!
 
 	}
 
@@ -99,23 +79,20 @@ public class Mapa {
 
 	}
 
-	public void crearPosBomberman(int cantBombermans) {
-		int i = 0;
-		jugadores.add(new Bomberman(1, 1));
-		jugadores.add(new Bomberman(FILMAX - 2, COLMAX - 2));
-		matrizMapa[1][1] = jugadores.get(i++);
-		matrizMapa[FILMAX - 2][COLMAX - 2] = jugadores.get(i++);
-		if (cantBombermans > 3) {
-			jugadores.add(new Bomberman(1, COLMAX - 2));
-			jugadores.add(new Bomberman(FILMAX - 2, 1));
-			matrizMapa[1][COLMAX - 2] = jugadores.get(i++);
-			matrizMapa[FILMAX - 2][1] = jugadores.get(i++);
-		}
-		if (cantBombermans == 3) {
-			jugadores.add(new Bomberman(1, COLMAX - 2));
-			matrizMapa[1][COLMAX - 2] = jugadores.get(i++);
-		}
-
+	
+	public void creaBomberman() {
+		int vec [][]= {{1,1},{9,13},{1,13},{9,1}};
+		boolean bandera = false;
+		
+		for(int j=0; j<=jugadores.size() && j<4 && bandera==false ;j++) {
+			if((matrizMapa[vec[j][0]][vec[j][1]]).esBomberman() == false) {
+				Bomberman bomber = new Bomberman(vec[j][0],vec[j][1]);
+				matrizMapa[bomber.getPosX()][bomber.getPosY()] = bomber;
+				jugadores.add(bomber);
+				bandera=true;
+			}
+		}	
+		
 	}
 
 	public void crearPiedras() {

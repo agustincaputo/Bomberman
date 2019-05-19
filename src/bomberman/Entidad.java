@@ -1,6 +1,6 @@
 package bomberman;
 
-public class Entidad {
+public abstract class Entidad  {
 	private int x;
 	private int y;
 	
@@ -16,6 +16,16 @@ public class Entidad {
 	}
 	public int getY() {
 		return y;
+	}
+	
+	public boolean esBloque() {
+		return true;
+	}
+	public boolean esBomba() {
+		return true;
+	}
+	public boolean esBomberman() {
+		return true;
 	}
 	
 

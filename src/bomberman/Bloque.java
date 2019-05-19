@@ -17,4 +17,22 @@ public class Bloque extends Entidad{
 	public String queTipo() {
 		return this.tipoBloque;
 	}
+	
+	public void explotarPiedra() {
+		this.tipoBloque="transitable";
+	}
+	
+	@Override
+	public boolean esBloque() {
+		return true;
+	}
+	@Override 
+	public boolean esBomberman() {
+		return false;
+	}
+	@Override 
+	public boolean esBomba() {
+		return false;
+	}
+	
 }

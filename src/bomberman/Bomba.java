@@ -1,146 +1,92 @@
 package bomberman;
 
+import java.util.HashMap;
 
-
-public class Bomba extends Entidad{
+public class Bomba extends Entidad {
 
 	private int rango;
 	private int tiempoDeEjecucion;
-	
+
 	public int getRango() {
 		return rango;
 	}
-
 
 	public void setRango(int rango) {
 		this.rango = rango;
 	}
 
-
 	public int getTiempoDeEjecucion() {
 		return tiempoDeEjecucion;
 	}
-
 
 	public void setTiempoDeEjecucion(int tiempoDeEjecucion) {
 		this.tiempoDeEjecucion = tiempoDeEjecucion;
 	}
 
-
 	public Bomba(int x, int y) {
-		super(x,y);
-		this.rango=3;
-		this.tiempoDeEjecucion=3;		
-	}
-	
-	
-	public void explotarBomba(Mapa mapa) {
-			boolean obstaculoArriba = false, obstaculoAbajo = false, obstaculoDerecha = false, obstaculoIzquierda = false;
-			int i;
-			for(i=0;i<=this.rango;i++) 
-			{
-				//abajo:
-				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bloque) {
-					if(((Bloque)mapa.getPosicionMapa(this.getX()+i, this.getY())).queTipo()=="pared" ||
-							((Bloque)mapa.getPosicionMapa(this.getX()+i, this.getY())).queTipo()=="obstaculo") {
-						obstaculoAbajo=true;
-					}
-					else if(((Bloque)mapa.getPosicionMapa(this.getX()+i, this.getY())).queTipo()=="piedra") {
-						Bloque transitable = new Bloque("transitable",this.getX()+i,this.getY());
-						mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
-						obstaculoAbajo=true;
-					}	
-				}				
-				if(obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomberman) {
-					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()+i, this.getY());
-					Bloque transitable = new Bloque("transitable",this.getX()+i,this.getY());
-					mapa.setMatrizMapa(transitable, this.getX()+i, this.getY());
-					muerto.muere(mapa);
-				}
-				if(i!=0 && obstaculoAbajo==false && mapa.getPosicionMapa(this.getX()+i, this.getY()) instanceof Bomba) {
-					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()+i, this.getY());
-					encontrada.explotarBomba(mapa);
-					obstaculoAbajo=true;
-				}
-				//termino abajo	
-				//arriba:
-				if(obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bloque) {
-					if(((Bloque)mapa.getPosicionMapa(this.getX()-i, this.getY())).queTipo()=="pared" ||
-							((Bloque)mapa.getPosicionMapa(this.getX()-i, this.getY())).queTipo()=="obstaculo") {
-						obstaculoArriba=true;
-					}
-					else if(((Bloque)mapa.getPosicionMapa(this.getX()-i, this.getY())).queTipo()=="piedra") {
-						Bloque transitable = new Bloque("transitable",this.getX()-i,this.getY());
-						mapa.setMatrizMapa(transitable, this.getX()-i, this.getY());
-						obstaculoArriba=true;
-					}	
-				}
-				if(obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomberman ) {
-					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX()-i, this.getY());
-					Bloque transitable = new Bloque("transitable",this.getX()-i,this.getY());
-					mapa.setMatrizMapa(transitable, this.getX()-i, this.getY());
-					muerto.muere(mapa);
-				}
-				if(i!=0 && obstaculoArriba==false && mapa.getPosicionMapa(this.getX()-i, this.getY()) instanceof Bomba ) {
-					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX()-i, this.getY());
-					encontrada.explotarBomba(mapa);
-					obstaculoArriba=true;
-				}
-				//termino arriba
-				//derecha:
-				if(obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bloque ) {
-					if(((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()+i)).queTipo()=="pared" ||
-							((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()+i)).queTipo()=="obstaculo") {
-						obstaculoDerecha=true;
-					}
-					else if(((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()+i)).queTipo()=="piedra") {
-						Bloque transitable = new Bloque("transitable",this.getX(),this.getY()+i);
-						mapa.setMatrizMapa(transitable, this.getX(), this.getY()+i);
-						obstaculoDerecha=true;
-					}	
-				}
-				if(obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomberman) {
-					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX(), this.getY()+i);
-					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()+i);
-					mapa.setMatrizMapa(transitable, this.getX(), this.getY()+i);
-					muerto.muere(mapa);
-				}
-				if(i!=0 && obstaculoDerecha==false && mapa.getPosicionMapa(this.getX(), this.getY()+i) instanceof Bomba)  {
-					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()+i);
-					encontrada.explotarBomba(mapa);
-					obstaculoDerecha=true;
-				}
-				//termina derecha
-				//izquierda:
-				if(obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bloque) {
-					if(((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()-i)).queTipo()=="pared" ||
-							((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()-i)).queTipo()=="obstaculo") {
-						obstaculoIzquierda=true;
-					}
-					else if(((Bloque)mapa.getPosicionMapa(this.getX(), this.getY()-i)).queTipo()=="piedra") {
-						Bloque transitable = new Bloque("transitable",this.getX(),this.getY()-i);
-						mapa.setMatrizMapa(transitable, this.getX(), this.getY()-i);
-						obstaculoIzquierda=true;
-					}	
-				}
-				if(obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomberman) {
-					Bomberman muerto = (Bomberman)mapa.getPosicionMapa(this.getX(), this.getY()-i);
-					Bloque transitable = new Bloque("transitable",this.getX(),this.getY()-i);
-					mapa.setMatrizMapa(transitable, this.getX(), this.getY()-i);
-					muerto.muere(mapa);
-				}
-				if(i!=0 && obstaculoIzquierda==false && mapa.getPosicionMapa(this.getX(), this.getY()-i) instanceof Bomba) {
-					Bomba encontrada = (Bomba)mapa.getPosicionMapa(this.getX(), this.getY()-i);
-					encontrada.explotarBomba(mapa);
-					obstaculoIzquierda=true;
-				}
-				//termina izquierda
-		}
+		super(x, y);
+		this.rango = 3;
+		this.tiempoDeEjecucion = 3;
 	}
 
+	public void explotarBomba(Mapa mapa) {
+			int deltas[][]= {{1,0},{0,1},{-1,0},{0,-1}};
+			boolean validas[]= {false,false,false,false};
+			int dx, dy;
+			Bloque transit = new Bloque("transitable",this.getX(),this.getY());
+			mapa.setMatrizMapa(transit, this.getX(), this.getY());//saco la bomba de la interfaz
+			
+			for(int i=0;i<=this.rango;i++) 
+			{
+				for(int j=0; j<deltas.length;j++) {
+					dx=this.getX()+(deltas[j][0]);
+					dy=this.getY()+(deltas[j][1]);
+					
+					if(validas[j]==false && mapa.getPosicionMapa(dx,dy).esBloque()) {
+						if(((Bloque)mapa.getPosicionMapa(dx,dy)).queTipo()=="pared" ||
+								((Bloque)mapa.getPosicionMapa(dx,dy)).queTipo()=="obstaculo") {
+							validas[j]=true;
+						}
+						else if(((Bloque)mapa.getPosicionMapa(dx,dy)).queTipo()=="piedra") {
+							Bloque transitable = new Bloque("transitable",dx,dy);
+							mapa.setMatrizMapa(transitable, dx,dy);
+							validas[j]=true;
+						}	
+					}				
+					if(validas[j]==false && mapa.getPosicionMapa(dx,dy).esBomberman()) {
+						Bomberman muerto = (Bomberman)mapa.getPosicionMapa(dx,dy);
+						Bloque transitable = new Bloque("transitable",dx,dy);
+						mapa.setMatrizMapa(transitable, dx,dy);
+						muerto.muere(mapa);
+					}
+					if(i!=0 && validas[j]==false && mapa.getPosicionMapa(dx,dy).esBomba()) {
+						Bomba encontrada = (Bomba)mapa.getPosicionMapa(dx,dy);
+						encontrada.explotarBomba(mapa);
+						validas[j]=true;
+					}
+				}
+				deltas[0][0]+=1;
+				deltas[1][1]+=1;
+				deltas[2][0]-=1;
+				deltas[3][1]-=1;
+			}
+	}
 
 	@Override
 	public String toString() {
 		return "Bomba";
+	}
+	
+	@Override
+	public boolean esBloque() {
+		return false;
+	}
+	@Override 
+	public boolean esBomberman() {
+		return false;
+	}
+	@Override 
+	public boolean esBomba() {
+		return true;
 	}
 }
