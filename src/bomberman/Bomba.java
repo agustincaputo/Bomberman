@@ -29,7 +29,7 @@ public class Bomba extends Entidad {
 		this.tiempoDeEjecucion = 3;
 	}
 
-	public void explotarBomba(Mapa mapa) {
+	public void explotar(Mapa mapa) {
 			int deltas[][]= {{1,0},{0,1},{-1,0},{0,-1}};
 			boolean validas[]= {false,false,false,false};
 			int dx, dy;
@@ -61,7 +61,7 @@ public class Bomba extends Entidad {
 					}
 					if(i!=0 && validas[j]==false && mapa.getPosicionMapa(dx,dy).esBomba()) {
 						Bomba encontrada = (Bomba)mapa.getPosicionMapa(dx,dy);
-						encontrada.explotarBomba(mapa);
+						encontrada.explotar(mapa);
 						validas[j]=true;
 					}
 				}

@@ -91,7 +91,7 @@ public class Bomberman extends Entidad{
 			Bomba nueva = new Bomba(posX,posY+1);//aca la ubico en el mapa (en el mismo lugar que el bomberman)	
 			mapa.setMatrizMapa(nueva, posX, posY+1);//la muestro en la interfaz
 		
-			nueva.explotarBomba(mapa);
+			nueva.explotar(mapa);
 			return nueva;	
 		}
 		return null;

@@ -23,7 +23,7 @@ public class TestBomba {
 		delJuego.moverse(Moverse.DERECHA, mapa);
 		Bomba BombaTest = new Bomba(3,2);
 		mapa.setMatrizMapa(BombaTest, 3, 2);
-		BombaTest.explotarBomba(mapa);
+		BombaTest.explotar(mapa);
 		assertEquals(1, delJuego.getPosX());//pos x del bomber
 		assertEquals(2, delJuego.getPosY());//pos y del bomber
 	}
@@ -42,7 +42,7 @@ public class TestBomba {
 		mapa.setMatrizMapa(new Bloque("piedra",3,2), 3, 2); 
 		mapa.setMatrizMapa(new Bloque("piedra",3,4), 3, 4); 
 		mapa.setMatrizMapa(new Bloque("piedra",3,5), 3, 5); 
-		bomba.explotarBomba(mapa);
+		bomba.explotar(mapa);
 		
 		
 		assertEquals("transitable", ((Bloque)mapa.getPosicionMapa(1, 3)).queTipo());
@@ -61,7 +61,7 @@ public class TestBomba {
 		mapa.setMatrizMapa(new Bloque("transitable",3,4), 3, 4);
 		mapa.setMatrizMapa(new Bloque("piedra",3,2), 3, 2);
 		mapa.setMatrizMapa(new Bloque("piedra",4,5),4,5);
-		bombaExplosiva.explotarBomba(mapa);
+		bombaExplosiva.explotar(mapa);
 		
 		assertTrue(mapa.getPosicionMapa(3, 1).esBomba());
 		assertEquals("transitable", ((Bloque)mapa.getPosicionMapa(4, 5)).queTipo());
@@ -74,7 +74,7 @@ public class TestBomba {
 		delJuego.moverse(Moverse.DERECHA, mapa);
 		
 		Bomba bomba = new Bomba(1,3);
-		bomba.explotarBomba(mapa);
+		bomba.explotar(mapa);
 		
 		assertTrue(mapa.getPosicionMapa(1, 1) instanceof Bomberman);
 		//assertEquals(1, delJuego.getCantMuertes());//no funca
