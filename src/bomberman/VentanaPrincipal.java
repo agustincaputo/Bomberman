@@ -3,6 +3,8 @@ package bomberman;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
@@ -41,6 +43,33 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.setBackground(new Color(79, 160, 2));
 		setContentPane(contentPane);
+		
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				setMovimiento(arg0);
+			}
+			
+		});
+	}
+	
+	public void setMovimiento(KeyEvent evento) {
+		if(evento.getKeyCode() == KeyEvent.VK_LEFT) {
+		}
+		
+		if(evento.getKeyCode() == KeyEvent.VK_RIGHT) {
+		}
+		
+		if(evento.getKeyCode() == KeyEvent.VK_UP) {
+		}
+		
+		if(evento.getKeyCode() == KeyEvent.VK_DOWN) {
+		}
+		
+		if(evento.getKeyCode() == KeyEvent.VK_B) {
+		}
+		repaint();
+		
 	}
 
 }
