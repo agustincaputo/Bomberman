@@ -144,4 +144,6 @@ public class Mapa {
 	public void setJugadores(ArrayList<Bomberman> jugadores) {
 		this.jugadores = jugadores;
 	}
+	
+	
 }
