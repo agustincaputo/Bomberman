@@ -17,6 +17,7 @@ public class PanelGrafico extends JPanel {
 	private ImageIcon obstaculo;
 	private ImageIcon piedra;
 	private Mapa mapa;
+	private Bomberman jugador1;
 	
 	public PanelGrafico() {
 		super();
@@ -30,7 +31,8 @@ public class PanelGrafico extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Entidad[][] matrizMapa = this.mapa.getMatrizMapa();
-		mapa.setMatrizMapa(new Bomberman(1,1),1,1);
+		this.jugador1 = new Bomberman(1,1);
+		mapa.setMatrizMapa(this.jugador1,1,1);
 		
 		int i,j;
 		
@@ -187,6 +189,22 @@ public class PanelGrafico extends JPanel {
 		g.drawImage(ladrillo.getImage(),120,80,40,40,null);
 		g.drawImage(ladrillo.getImage(),120,160,40,40,null);
 		g.drawImage(ladrillo.getImage(),120,360,40,40,null);*/
+	}
+
+	public Bomberman getJugador1() {
+		return jugador1;
+	}
+
+	public void setJugador1(Bomberman jugador1) {
+		this.jugador1 = jugador1;
+	}
+
+	public Mapa getMapa() {
+		return mapa;
+	}
+
+	public void setMapa(Mapa mapa) {
+		this.mapa = mapa;
 	}
 	
 	

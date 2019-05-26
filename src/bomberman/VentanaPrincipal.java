@@ -55,15 +55,19 @@ public class VentanaPrincipal extends JFrame {
 	
 	public void setMovimiento(KeyEvent evento) {
 		if(evento.getKeyCode() == KeyEvent.VK_LEFT) {
+			contentPane.getJugador1().moverse(Moverse.IZQUIERDA, contentPane.getMapa());
 		}
 		
 		if(evento.getKeyCode() == KeyEvent.VK_RIGHT) {
+			contentPane.getJugador1().moverse(Moverse.DERECHA, contentPane.getMapa());
 		}
 		
 		if(evento.getKeyCode() == KeyEvent.VK_UP) {
+			contentPane.getJugador1().moverse(Moverse.ARRIBA, contentPane.getMapa());
 		}
 		
 		if(evento.getKeyCode() == KeyEvent.VK_DOWN) {
+			contentPane.getJugador1().moverse(Moverse.ABAJO, contentPane.getMapa());
 		}
 		
 		if(evento.getKeyCode() == KeyEvent.VK_B) {
