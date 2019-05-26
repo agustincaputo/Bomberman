@@ -1,5 +1,7 @@
 package bomberman;
 import java.awt.Graphics;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -16,19 +18,19 @@ public class PanelGrafico extends JPanel {
 	private ImageIcon piedra;
 	private Mapa mapa;
 	
-	
 	public PanelGrafico() {
 		super();
 		this.bomba = new ImageIcon();
-		this.bomberman = new ImageIcon();
+		this.bomberman = new ImageIcon("src/bomberman/graficos/bomberman.png");
 		this.obstaculo = new ImageIcon("src/bomberman/graficos/obstaculo.jpg");
-		this.piedra = new ImageIcon("src/bomberman/graficos/piedra.jpg");
+		this.piedra = new ImageIcon("src/bomberman/graficos/piedra.jpg");		
 		this.mapa = new Mapa();
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Entidad[][] matrizMapa = this.mapa.getMatrizMapa();
+		mapa.setMatrizMapa(new Bomberman(1,1),1,1);
 		
 		int i,j;
 		
@@ -39,19 +41,20 @@ public class PanelGrafico extends JPanel {
 				if(matrizMapa[i][j].esBloque())
 				{
 					if(((Bloque)mapa.getPosicionMapa(i,j)).queTipo() == "pared" || ((Bloque)mapa.getPosicionMapa(i,j)).queTipo() == "obstaculo")
-					{
-						g.drawImage(obstaculo.getImage(),i*40,j*40,40,40,null);
-					}
+						g.drawImage(obstaculo.getImage(),i*40,j*40,40,40,null);					
 					
 					if(((Bloque)mapa.getPosicionMapa(i,j)).queTipo() == "piedra")
-					{
 						g.drawImage(piedra.getImage(),i*40,j*40,40,40,null);
-					}
 				}
+				
+				if(matrizMapa[i][j].esBomberman()) {
+					g.drawImage(bomberman.getImage(),i*40,j*40,40,40,null);
+				}
+					
 			}
 		}
 		
-		/*g.drawImage(piedra.getImage(),0,0,40,40,null);
+		/*g.drawImage(piedra.getImage(),0,0,40,40,null)
 		g.drawImage(piedra.getImage(),0,40,40,40,null);
 		g.drawImage(piedra.getImage(),0,80,40,40,null);
 		g.drawImage(piedra.getImage(),0,120,40,40,null);
