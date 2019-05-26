@@ -21,7 +21,7 @@ public class PanelGrafico extends JPanel {
 	public PanelGrafico() {
 		super();
 		this.bomba = new ImageIcon();
-		this.bomberman = new ImageIcon("src/bomberman/graficos/bomberman.png");
+		this.bomberman = new ImageIcon("src/bomberman/graficos/bomberman.gif");
 		this.obstaculo = new ImageIcon("src/bomberman/graficos/obstaculo.jpg");
 		this.piedra = new ImageIcon("src/bomberman/graficos/piedra.jpg");		
 		this.mapa = new Mapa();
